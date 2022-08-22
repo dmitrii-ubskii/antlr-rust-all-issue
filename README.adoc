@@ -1,5 +1,7 @@
 = Antlr 4 rust issue MRE
 
+https://github.com/rrevenantt/antlr4rust/issues/56
+
 Rule: `GET VAR_ (',' VAR_)`
 
 String: `get $abc, $def`
