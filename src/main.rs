@@ -36,27 +36,27 @@ impl<'input> ParseTreeVisitorCompat<'input> for Parser {
 }
 
 impl<'input> all_testVisitorCompat<'input> for Parser {
-    // fn visit_list(&mut self, ctx: &ListContext<'input>) -> Self::Return {
-    //     ctx.VAR__all().into_iter().map(|x| x.symbol.get_text().to_string()).collect::<Vec<String>>().join(" ")
-    // }
-
-    fn visit_list(&mut self, ctx: &ListContext<'input>) -> Self::Return {
-        let mut i = 0;
-        let mut buffer = String::new();
-        loop {
-            match ctx.VAR_(i) {
-                Some(var) => {
-                    if buffer.len() > 0 {
-                        buffer.push(' ');
-                    }
-                    buffer.push_str(var.symbol.get_text());
-                },
-                None => break,
-            }
-            i += 1;
-        }
-        buffer
+    fn visit_list(&mut self, ctx: &ListContext<'input>) -> Self::Return {  // erroneous results
+        ctx.VAR__all().into_iter().map(|x| x.symbol.get_text().to_string()).collect::<Vec<String>>().join(" ")
     }
+
+    //fn visit_list(&mut self, ctx: &ListContext<'input>) -> Self::Return {  // <- this works as expected
+    //    let mut i = 0;
+    //    let mut buffer = String::new();
+    //    loop {
+    //        match ctx.VAR_(i) {
+    //            Some(var) => {
+    //                if buffer.len() > 0 {
+    //                    buffer.push(' ');
+    //                }
+    //                buffer.push_str(var.symbol.get_text());
+    //            },
+    //            None => break,
+    //        }
+    //        i += 1;
+    //    }
+    //    buffer
+    //}
 }
 
 fn main() {

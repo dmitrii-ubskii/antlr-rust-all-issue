@@ -1,0 +1,11 @@
+= Antlr 4 rust issue MRE
+
+Rule: `GET VAR_ (',' VAR_)`
+
+String: `get $abc, $def`
+
+Expected: `$abc`, `$def`
+
+`VAR__all()`: `get`, `$abc`, `,`, `$def`
+
+Querying `VAR_()` directly: `$abc`, `$def`
