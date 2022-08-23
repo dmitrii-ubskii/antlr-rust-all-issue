@@ -37,7 +37,11 @@ impl<'input> ParseTreeVisitorCompat<'input> for Parser {
 
 impl<'input> all_testVisitorCompat<'input> for Parser {
     fn visit_list(&mut self, ctx: &ListContext<'input>) -> Self::Return {  // erroneous results
-        ctx.VAR__all().into_iter().map(|x| x.symbol.get_text().to_string()).collect::<Vec<String>>().join(" ")
+        ctx.VAR__all()
+            .into_iter()
+            .map(|x| x.symbol.get_text().to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
     }
 
     //fn visit_list(&mut self, ctx: &ListContext<'input>) -> Self::Return {  // <- this works as expected
