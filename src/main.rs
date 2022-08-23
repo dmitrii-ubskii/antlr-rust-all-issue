@@ -41,21 +41,11 @@ impl<'input> all_testVisitorCompat<'input> for Parser {
     }
 
     //fn visit_list(&mut self, ctx: &ListContext<'input>) -> Self::Return {  // <- this works as expected
-    //    let mut i = 0;
-    //    let mut buffer = String::new();
-    //    loop {
-    //        match ctx.VAR_(i) {
-    //            Some(var) => {
-    //                if buffer.len() > 0 {
-    //                    buffer.push(' ');
-    //                }
-    //                buffer.push_str(var.symbol.get_text());
-    //            },
-    //            None => break,
-    //        }
-    //        i += 1;
-    //    }
-    //    buffer
+    //    (0..)
+    //        .map_while(|i| ctx.VAR_(i))
+    //        .map(|x| x.symbol.get_text().to_string())
+    //        .collect::<Vec<String>>()
+    //        .join(" ")
     //}
 }
 
